@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7f5">
+  <link rel="icon" href="data:,">
+  <title>Laya | Decision Workspace</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/icons.js" defer></script>
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Laya home"><span class="brand-mark"><i data-lucide="workflow"></i></span>Laya<span class="brand-tag">LOCAL</span></a>
+    <div class="top-status"><span class="status-dot"></span><span id="connection">Connecting</span><span class="divider"></span><span class="device"><i data-lucide="cpu"></i>CPU / ONNX</span></div>
+    <a class="source-link" href="https://github.com/receptron/laya" target="_blank" rel="noreferrer" title="Open runtime source" aria-label="Open runtime source"><i data-lucide="code-xml"></i><span>Source</span><i data-lucide="arrow-up-right"></i></a>
+  </header>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="sidebar-heading">WORKSPACE</div>
+      <div class="nav-current"><i data-lucide="sliders-horizontal"></i>Playground</div>
+      <div class="sidebar-heading presets-heading">SAVED CASES<span>03</span></div>
+      <nav id="presets" aria-label="Example cases">
+        <button class="preset active" data-preset="refund"><i data-lucide="receipt-text"></i><span>Refund request<small>Customer operations</small></span></button>
+        <button class="preset" data-preset="security"><i data-lucide="shield-check"></i><span>Account security<small>Risk assessment</small></span></button>
+        <button class="preset" data-preset="support"><i data-lucide="messages-square"></i><span>Technical support<small>Ticket routing</small></span></button>
+      </nav>
+      <div class="sidebar-bottom"><span class="small-label">RUNTIME</span><div><span class="status-dot"></span>Laya · ONNX</div><span class="muted">CPU execution</span><span class="local-note"><i data-lucide="lock-keyhole"></i>127.0.0.1 only</span></div>
+    </aside>
+    <main>
+      <section class="page-heading"><div><div class="eyebrow">SYSTEM ONE / PLAYGROUND</div><h1>Decision workspace</h1></div><span class="model-tag">laya <span>fp32</span></span></section>
+      <div class="work-grid">
+        <section class="input-panel" aria-label="Decision inputs">
+          <div class="section-title"><span class="step">01</span><h2>State</h2><span class="format-label">JSON</span><button id="format-state" class="icon-button" title="Format state JSON" aria-label="Format state JSON"><i data-lucide="braces"></i></button></div>
+          <div class="editor-wrap state-wrap"><label for="state" class="visually-hidden">State JSON</label><textarea id="state" spellcheck="false" autocapitalize="off"></textarea><div class="editor-footer"><span id="state-size">0 characters</span><span>state.json</span></div></div>
+          <div class="section-title question-title"><span class="step">02</span><h2>Questions</h2><span class="count-badge" id="question-count">3</span><div class="question-actions"><label class="visually-hidden" for="question-type">New question type</label><select id="question-type"><option value="choice">Choice</option><option value="score">Score</option><option value="noul">Yes / No</option></select><button id="add-question" class="icon-button" title="Add question" aria-label="Add question"><i data-lucide="plus"></i></button><button id="format-questions" class="icon-button" title="Format questions JSON" aria-label="Format questions JSON"><i data-lucide="braces"></i></button></div></div>
+          <div class="editor-wrap"><label for="questions" class="visually-hidden">Questions JSON</label><textarea id="questions" spellcheck="false" autocapitalize="off"></textarea><div class="editor-footer"><span>choice / score / noul</span><span>questions.json</span></div></div>
+          <div id="error" class="error" role="alert" hidden></div>
+          <div class="run-bar"><button id="reset" class="reset-button" title="Reset current case"><i data-lucide="rotate-ccw"></i>Reset</button><button id="run" class="run-button" disabled><i data-lucide="play"></i><span>Run decision</span><i data-lucide="arrow-right"></i></button></div>
+        </section>
+        <section class="results-panel" aria-label="Decision results" aria-busy="false">
+          <div class="results-top"><div class="section-title"><span class="step">03</span><h2>Results</h2></div><div class="result-tools"><button id="copy" class="icon-button" disabled title="Copy result JSON" aria-label="Copy result JSON"><i data-lucide="copy"></i></button><button id="download" class="icon-button" disabled title="Download result JSON" aria-label="Download result JSON"><i data-lucide="download"></i></button></div></div>
+          <div class="result-tabs" role="tablist" aria-label="Result view"><button id="answers-tab" class="selected" role="tab" aria-selected="true" aria-controls="answers-view">Answers</button><button id="json-tab" role="tab" aria-selected="false" aria-controls="json-view" tabindex="-1">Raw JSON</button><span id="result-status">AWAITING INPUT</span></div>
+          <div id="result-summary" class="result-summary" hidden><div><span class="small-label">INFERENCE</span><strong id="latency">-</strong></div><div><span class="small-label">INPUT TOKENS</span><strong id="tokens">-</strong></div><div><span class="small-label">ANSWERS</span><strong id="answer-total">-</strong></div></div>
+          <div id="answers-view" role="tabpanel" aria-labelledby="answers-tab"><div id="empty" class="empty"><span class="empty-icon"><i data-lucide="chart-no-axes-combined"></i></span><h3>No decision yet</h3><span class="empty-status">MODEL READY / CPU</span></div><div id="answers" aria-live="polite"></div></div>
+          <div id="json-view" role="tabpanel" aria-labelledby="json-tab" hidden><pre id="raw">{}</pre></div>
+          <div class="result-bottom"><i data-lucide="hard-drive"></i><span>Local inference</span><span id="run-count">0 runs</span></div>
+        </section>
+      </div>
+      <footer class="page-footer"><span><span class="status-dot"></span>Local workspace</span><span>LAYA / DECISION MODELS</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

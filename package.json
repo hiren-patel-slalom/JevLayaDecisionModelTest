@@ -1,0 +1,20 @@
+{
+  "name": "laya-local-decisions",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node run.mjs",
+    "playground": "node server.mjs",
+    "test": "node --test",
+    "decide": "node run.mjs",
+    "download": "node run.mjs --download-only"
+  },
+  "dependencies": {
+    "@receptron/laya": "0.2.0",
+    "lucide": "1.60.0"
+  }
+}

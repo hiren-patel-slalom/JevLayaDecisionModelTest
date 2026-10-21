@@ -10,10 +10,22 @@ Open the URL printed in the terminal, normally http://127.0.0.1:3000.
 If that port is occupied, the server tries ports 3001 through 3009.
 The server loads the model once and keeps it in memory until stopped with Ctrl+C.
 
-The playground includes editable state and question JSON, refund/security/support
-presets, new question controls, probability charts, raw JSON, and copy/download
-actions. It works on desktop and mobile-sized browser windows. Assets and icons
-are served locally; no external frontend service is required.
+The playground includes editable state and question JSON, ten showcase cases,
+new question controls, probability charts, raw JSON, and copy/download actions.
+It works on desktop and mobile-sized browser windows. Assets and icons are
+served locally; no external frontend service is required.
+
+Showcase cases cover refunds, account security, technical support, sales
+qualification, product feedback, inbox spam triage, delivery issues, return
+eligibility, agent tool selection, and meeting follow-ups. Each case has three
+editable questions, with a mix of choices, scores, and yes/no decisions.
+
+These are interactive examples, not an accuracy benchmark or reliable policy
+engine. During verification, the model mislabeled the mixed review as positive,
+the suspicious email as business correspondence, and the missing delivery as
+received. Results are live model predictions, not curated or hardcoded answers.
+Review probabilities and validate against your own labeled data before relying
+on decisions, especially for security or policy enforcement.
 
 The server binds only to `127.0.0.1`, rejects cross-origin browser requests,
 limits request bodies to 64 KB, and permits one inference at a time.
